@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Electronic Specialists | Telemetry &amp; SCADA, Invercargill</title>
+<meta name="description" content="Invercargill electronics design and manufacturing since 1985. Fail-safe telemetry and SCADA monitoring for farms, factories and shops — TIM &amp; KIM effluent alarms, Footprint people counters and Safety Breed foaling alarms.">
+<meta name="theme-color" content="#0a1526">
+<link rel="icon" href="img/favicon.png" type="image/png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Electronic Specialists | Telemetry &amp; SCADA, Invercargill">
+<meta property="og:description" content="Fail-safe electronic monitoring designed and built in Southland since 1985.">
+<meta property="og:image" content="img/og.jpg">
+<link rel="preload" as="image" href="img/b4.jpg" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a1526; --navy2:#0f1f38; --panel:#122642;
+  --bone:#eef2f7; --white:#ffffff; --ink:#0c1626; --body:#39485c; --muted:#6a7c92;
+  --line:#e2e8f1; --accent:#25cfe2; --accent-d:#12a9bd; --accent-ink:#03242a;
+  --radius:16px; --maxw:1200px;
+  --shadow:0 18px 50px -22px rgba(9,20,38,.45);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Work Sans",system-ui,sans-serif;color:var(--body);background:var(--white);
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block;image-orientation:from-image}
+h1,h2,h3,h4{font-family:"Space Grotesk",sans-serif;color:var(--ink);line-height:1.08;margin:0;letter-spacing:-.015em}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{font-family:"Space Grotesk",sans-serif;text-transform:uppercase;letter-spacing:.22em;
+  font-size:12.5px;font-weight:600;color:var(--accent-d)}
+.eyebrow.on-dark{color:var(--accent)}
+section{padding:92px 0}
+.section-head{max-width:640px;margin-bottom:52px}
+.section-head h2{font-size:clamp(30px,4.4vw,46px);margin:14px 0 16px;font-weight:700}
+.section-head p{margin:0;font-size:17px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:"Space Grotesk",sans-serif;font-weight:600;
+  font-size:15.5px;padding:15px 26px;border-radius:12px;cursor:pointer;border:1px solid transparent;
+  transition:transform .18s ease,background .18s ease,box-shadow .18s ease;min-height:52px;letter-spacing:.01em}
+.btn svg{width:19px;height:19px;flex:none}
+.btn-primary{background:var(--accent);color:var(--accent-ink);box-shadow:0 12px 30px -12px rgba(37,207,226,.7)}
+.btn-primary:hover{transform:translateY(-2px);background:#3ad8ea}
+.btn-ghost{background:transparent;color:var(--white);border-color:rgba(255,255,255,.28)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.btn-dark{background:var(--ink);color:var(--white)}
+.btn-dark:hover{transform:translateY(-2px);background:#16273f}
+
+/* ---------- intro overlay ---------- */
+#intro{position:fixed;inset:0;background:var(--navy);z-index:2000;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:22px;transition:opacity .7s ease,visibility .7s ease}
+#intro img{width:min(320px,64vw);opacity:.96;filter:drop-shadow(0 6px 22px rgba(0,0,0,.5))}
+#intro .bar{width:132px;height:3px;border-radius:3px;background:rgba(255,255,255,.14);overflow:hidden}
+#intro .bar i{display:block;height:100%;width:40%;background:var(--accent);animation:load 1.15s ease-in-out infinite}
+@keyframes load{0%{transform:translateX(-120%)}100%{transform:translateX(320%)}}
+body.loaded #intro{opacity:0;visibility:hidden}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- nav ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:1000;transition:background .3s ease,box-shadow .3s ease,padding .3s ease;
+  padding:16px 0}
+header.scrolled{background:rgba(10,21,38,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(255,255,255,.06);padding:10px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center}
+.brand img{height:34px;width:auto}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{color:rgba(255,255,255,.82);font-size:15px;font-weight:500;font-family:"Space Grotesk",sans-serif;transition:color .18s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.nav-cta .call{display:inline-flex;align-items:center;gap:9px;color:var(--white);font-family:"Space Grotesk",sans-serif;
+  font-weight:600;font-size:15px;padding:11px 20px;border-radius:11px;background:var(--accent);color:var(--accent-ink);min-height:44px}
+.nav-cta .call svg{width:17px;height:17px}
+.nav-cta .call:hover{background:#3ad8ea}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:8px;width:46px;height:46px}
+.burger span{display:block;width:24px;height:2px;background:#fff;margin:5px auto;transition:.3s}
+.mobile-menu{display:none}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;background:var(--navy);overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;
+  transition:opacity 1.6s ease;filter:saturate(.9) contrast(1.05)}
+.hero-bg .slide.active{opacity:1}
+.hero-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(105deg,rgba(8,17,32,.9) 0%,rgba(8,17,32,.74) 42%,rgba(8,17,32,.5) 100%)}
+.hero-inner{position:relative;z-index:2;padding:132px 0 68px}
+.hero-inner .eyebrow{display:inline-flex;align-items:center;gap:10px}
+.hero-inner .eyebrow::before{content:"";width:26px;height:1.5px;background:var(--accent)}
+.hero h1{color:var(--white);font-size:clamp(38px,6.4vw,72px);font-weight:700;margin:22px 0 20px;max-width:16ch}
+.hero h1 span{color:var(--accent)}
+.hero .lede{color:rgba(255,255,255,.86);font-size:clamp(17px,2vw,20px);max-width:56ch;margin:0 0 34px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px}
+.rating{margin-top:34px;display:inline-flex;align-items:center;gap:14px;padding:13px 20px;border-radius:14px;
+  background:rgba(255,255,255,.08);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.16);max-width:100%}
+.rating .stars{display:flex;gap:2px;color:var(--accent)}
+.rating .stars svg{width:17px;height:17px}
+.rating .txt{color:#fff;font-size:14px;line-height:1.35}
+.rating .txt b{font-family:"Space Grotesk",sans-serif}
+.scroll-hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.5);
+  display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.scroll-hint svg{width:18px;height:18px;animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ---------- trust strip ---------- */
+.trust{background:var(--navy2);padding:0}
+.trust .grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.trust .item{display:flex;gap:16px;align-items:flex-start;padding:34px 30px;border-right:1px solid rgba(255,255,255,.08)}
+.trust .item:last-child{border-right:0}
+.trust .ic{width:44px;height:44px;flex:none;border-radius:11px;background:rgba(37,207,226,.13);
+  display:flex;align-items:center;justify-content:center;color:var(--accent)}
+.trust .ic svg{width:22px;height:22px}
+.trust h3{color:#fff;font-size:17px;margin-bottom:5px;font-weight:600}
+.trust p{color:rgba(255,255,255,.62);font-size:14.5px;margin:0}
+
+/* ---------- services ---------- */
+.services{background:var(--bone)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.card{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);
+  box-shadow:var(--shadow);transition:transform .22s ease,box-shadow .22s ease;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-6px);box-shadow:0 26px 60px -26px rgba(9,20,38,.55)}
+.card .ph{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--navy)}
+.card .ph img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.05);transition:transform .5s ease}
+.card:hover .ph img{transform:scale(1.05)}
+.card .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,21,38,0) 40%,rgba(10,21,38,.45))}
+.card .tag{position:absolute;top:14px;left:14px;z-index:2;background:rgba(10,21,38,.72);color:var(--accent);
+  font-family:"Space Grotesk",sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 11px;border-radius:8px;backdrop-filter:blur(4px)}
+.card .body{padding:26px 24px 28px}
+.card h3{font-size:21px;margin-bottom:9px;font-weight:600}
+.card p{margin:0;font-size:15.5px}
+.card .more{margin-top:16px;display:inline-flex;align-items:center;gap:7px;color:var(--accent-d);
+  font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:14px}
+.card .more svg{width:15px;height:15px;transition:transform .2s}
+.card:hover .more svg{transform:translateX(4px)}
+
+/* ---------- about ---------- */
+.about{background:#fff}
+.about .split{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center}
+.about-media{position:relative}
+.about-media img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radius);filter:saturate(.9) contrast(1.05)}
+.about-media .badge{position:absolute;bottom:-22px;right:-14px;background:var(--navy);color:#fff;border-radius:14px;
+  padding:20px 24px;box-shadow:var(--shadow);text-align:center}
+.about-media .badge b{display:block;font-family:"Space Grotesk",sans-serif;font-size:34px;color:var(--accent);line-height:1}
+.about-media .badge span{font-size:12.5px;color:rgba(255,255,255,.72);letter-spacing:.08em;text-transform:uppercase}
+.about-copy h2{font-size:clamp(28px,3.8vw,42px);margin:14px 0 18px;font-weight:700}
+.about-copy p{margin:0 0 16px}
+.checklist{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:14px}
+.checklist li{display:flex;gap:13px;align-items:flex-start;font-size:16px;color:var(--ink)}
+.checklist .tick{width:26px;height:26px;flex:none;border-radius:8px;background:rgba(37,207,226,.14);color:var(--accent-d);
+  display:flex;align-items:center;justify-content:center}
+.checklist .tick svg{width:15px;height:15px}
+.checklist b{font-weight:600}
+
+/* ---------- team ---------- */
+.team{background:var(--bone)}
+.badge-pill{display:inline-block;font-family:"Space Grotesk",sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent-d);background:rgba(37,207,226,.13);padding:6px 13px;border-radius:20px;margin-bottom:14px}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.member{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px 28px;text-align:center;
+  box-shadow:var(--shadow)}
+.avatar{width:78px;height:78px;margin:0 auto 18px;border-radius:50%;background:var(--navy);color:var(--accent);
+  display:flex;align-items:center;justify-content:center;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:26px;
+  border:2px solid var(--accent);box-shadow:0 0 0 6px rgba(37,207,226,.1)}
+.member h3{font-size:19px;margin-bottom:6px;font-weight:600}
+.member .role{color:var(--accent-d);font-family:"Space Grotesk",sans-serif;font-size:13px;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+.member p{font-size:15px;margin:0}
+
+/* ---------- reviews ---------- */
+.reviews{background:#fff}
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-bottom:40px}
+.rev{background:var(--bone);border:1px solid var(--line);border-radius:var(--radius);padding:32px 30px;position:relative}
+.rev .quote{position:absolute;top:22px;right:26px;font-family:"Space Grotesk";font-size:64px;line-height:1;color:rgba(37,207,226,.2)}
+.rev .stars{display:flex;gap:3px;color:var(--accent);margin-bottom:14px}
+.rev .stars svg{width:18px;height:18px}
+.rev .kicker{font-family:"Space Grotesk",sans-serif;font-weight:600;color:var(--ink);font-size:15px;margin-bottom:8px}
+.rev p{font-size:16px;color:var(--body);margin:0 0 20px}
+.rev .who{display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--line);padding-top:16px}
+.rev .who b{font-family:"Space Grotesk",sans-serif;color:var(--ink);font-size:15.5px}
+.rev .who span{font-size:13.5px;color:var(--muted)}
+.rev-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+
+/* ---------- review banner ---------- */
+.rev-banner{background:var(--navy);position:relative;overflow:hidden}
+.rev-banner::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(700px 300px at 85% 20%,rgba(37,207,226,.16),transparent 70%)}
+.rev-banner .inner{position:relative;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.rev-banner h2{color:#fff;font-size:clamp(26px,3.4vw,38px);font-weight:700;max-width:20ch}
+.rev-banner p{color:rgba(255,255,255,.72);margin:10px 0 0;font-size:16px}
+
+/* ---------- contact ---------- */
+.contact{background:var(--navy);color:#fff}
+.contact .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.contact h2{color:#fff;font-size:clamp(30px,4vw,44px);margin:14px 0 18px;font-weight:700}
+.contact .lede{color:rgba(255,255,255,.76);margin:0 0 30px;font-size:17px}
+.info-row{display:flex;gap:15px;align-items:flex-start;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.info-row .ic{width:42px;height:42px;flex:none;border-radius:11px;background:rgba(255,255,255,.07);color:var(--accent);
+  display:flex;align-items:center;justify-content:center}
+.info-row .ic svg{width:20px;height:20px}
+.info-row .lbl{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:3px;
+  font-family:"Space Grotesk",sans-serif}
+.info-row .val{color:#fff;font-size:16.5px;font-weight:500}
+.info-row a.val:hover{color:var(--accent)}
+.socials{display:flex;gap:12px;margin-top:26px}
+.socials a{width:46px;height:46px;border-radius:11px;background:rgba(255,255,255,.08);display:flex;align-items:center;
+  justify-content:center;color:#fff;transition:.2s;border:1px solid rgba(255,255,255,.1)}
+.socials a:hover{background:var(--accent);color:var(--accent-ink);transform:translateY(-3px)}
+.socials svg{width:20px;height:20px}
+.contact-card{background:var(--panel);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:38px 34px}
+.contact-card h3{color:#fff;font-size:23px;margin-bottom:10px;font-weight:600}
+.contact-card p{color:rgba(255,255,255,.7);font-size:15.5px;margin:0 0 26px}
+.contact-card .btn{width:100%;justify-content:center;margin-bottom:14px;font-size:16px;padding:17px}
+.contact-card .fineprint{font-size:13px;color:rgba(255,255,255,.5);text-align:center;margin:8px 0 0}
+
+/* ---------- map ---------- */
+.map-sec{padding:0;background:var(--navy)}
+.map-wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px 92px}
+.map-wrap .frame{border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,.12);line-height:0;box-shadow:var(--shadow)}
+.map-wrap iframe{width:100%;height:400px;border:0;display:block;filter:grayscale(.2) contrast(1.05)}
+
+/* ---------- footer ---------- */
+footer{background:#060f1e;color:rgba(255,255,255,.62);padding:64px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+.foot-brand img{height:38px;margin-bottom:18px}
+.foot-brand p{font-size:15px;max-width:38ch;margin:0 0 18px}
+.foot-col h4{color:#fff;font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;font-weight:600}
+.foot-col a{display:block;color:rgba(255,255,255,.62);font-size:15px;padding:6px 0;transition:.18s}
+.foot-col a:hover{color:var(--accent)}
+.foot-social{display:flex;gap:10px;margin-top:4px}
+.foot-social a{width:40px;height:40px;padding:0;border-radius:10px;background:rgba(255,255,255,.07);display:flex;
+  align-items:center;justify-content:center;color:#fff;transition:.2s}
+.foot-social a:hover{background:var(--accent);color:var(--accent-ink)}
+.foot-social svg{width:18px;height:18px}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:26px;font-size:13.5px}
+.foot-bottom a{color:rgba(255,255,255,.62)}
+.foot-bottom a:hover{color:var(--accent)}
+
+/* ---------- responsive ---------- */
+@media(max-width:960px){
+  .about .split{grid-template-columns:1fr;gap:40px}
+  .about-media .badge{right:14px}
+  .contact .split{grid-template-columns:1fr;gap:36px}
+  .svc-grid,.team-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .foot-brand{grid-column:1/-1}
+}
+@media(max-width:760px){
+  .nav-links{display:none}
+  .nav-cta .call span{display:none}
+  .nav-cta .call{padding:11px 14px}
+  .burger{display:block}
+  .mobile-menu{display:block;position:fixed;inset:0 0 0 auto;width:min(320px,84vw);background:var(--navy2);z-index:1500;
+    transform:translateX(100%);transition:transform .35s ease;padding:88px 28px 40px;box-shadow:-20px 0 60px rgba(0,0,0,.4)}
+  .mobile-menu.open{transform:translateX(0)}
+  .mobile-menu a{display:block;color:#fff;font-family:"Space Grotesk",sans-serif;font-size:19px;padding:15px 0;
+    border-bottom:1px solid rgba(255,255,255,.08)}
+  .mobile-menu .btn{margin-top:24px;width:100%;justify-content:center}
+  .m-overlay{position:fixed;inset:0;background:rgba(4,10,20,.6);z-index:1400;opacity:0;visibility:hidden;transition:.3s}
+  .m-overlay.open{opacity:1;visibility:visible}
+  body.menu-open{overflow:hidden}
+  .trust .grid{grid-template-columns:1fr}
+  .trust .item{border-right:0;border-bottom:1px solid rgba(255,255,255,.08)}
+  .trust .item:last-child{border-bottom:0}
+  .svc-grid,.team-grid,.rev-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  section{padding:64px 0}
+  .hero-inner{padding:120px 0 90px}
+  .about-media .badge{padding:16px 18px}
+  .about-media .badge b{font-size:28px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-bg .slide{transition:none}
+  .scroll-hint svg{animation:none}
+  #intro .bar i{animation:none;width:100%}
+  .reveal{transition:none;opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- intro -->
+<div id="intro" aria-hidden="true">
+  <img src="img/logo.png" alt="Electronic Specialists">
+  <div class="bar"><i></i></div>
+</div>
+
+<!-- header -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#top" class="brand" aria-label="Electronic Specialists home"><img src="img/logo.png" alt="Electronic Specialists"></a>
+    <nav class="nav-links">
+      <a href="#services">What we do</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="call" href="tel:022 682 9951"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>022 682 9951</span></a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile menu -->
+<div class="m-overlay" id="m-overlay"></div>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile">
+  <a href="#services">What we do</a>
+  <a href="#products">Products</a>
+  <a href="#about">About</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#contact">Contact</a>
+  <a class="btn btn-primary" href="tel:022 682 9951">Call the workshop</a>
+</nav>
+
+<!-- hero -->
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="slide active" style="background-image:url('img/b4.jpg')"></div>
+    <div class="slide" data-bg="img/b1.jpg"></div>
+    <div class="slide" data-bg="img/b5.jpg"></div>
+    <div class="slide" data-bg="img/b6.jpg"></div>
+  </div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow on-dark">Invercargill &middot; Telemetry &amp; SCADA since 1985</span>
+    <h1>Fail-safe electronics, <span>designed and built</span> in Southland.</h1>
+    <p class="lede">We design, manufacture and service monitoring and automation systems that keep watch when you can't — on the farm, in the factory and across the shop floor. Proven electronics, backed by the people who built them.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="tel:022 682 9951">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call 022 682 9951
+      </a>
+      <a class="btn btn-ghost" href="#contact">Talk to an engineer</a>
+    </div>
+    <div class="rating">
+      <span class="stars" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9"/></svg>
+      </span>
+      <span class="txt"><b>Trusted on farms &amp; sites</b><br>across New Zealand for 40+ years</span>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">Scroll
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
+
+<!-- trust strip -->
+<section class="trust">
+  <div class="wrap">
+    <div class="grid">
+      <div class="item reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><h3>Invercargill workshop</h3><p>Designed and built in Southland, shipped and supported right across New Zealand and beyond.</p></div>
+      </div>
+      <div class="item reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div><h3>Fail-safe by design</h3><p>Our monitoring shuts things down the moment something's wrong — so a split hose or stuck irrigator never becomes a disaster.</p></div>
+      </div>
+      <div class="item reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6 6a2 2 0 0 0 2.8 2.8l6-6a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.1-2.1z"/></svg></div>
+        <div><h3>We service what we sell</h3><p>Building electronics since 1985. When you call, you reach the people who designed the gear — not a call centre.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- services -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">What we do</span>
+      <h2>Monitoring and automation, engineered end to end</h2>
+      <p>From a single fail-safe field device to a full SCADA network, we handle the design, manufacture, install and support in-house.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="card reveal">
+        <div class="ph"><span class="tag">Farmtrenz</span><img src="img/b1.jpg" alt="Effluent pond on a Southland dairy farm at dusk" loading="lazy" width="2000" height="527"></div>
+        <div class="body">
+          <h3>Effluent &amp; farm monitoring</h3>
+          <p>Our fail-safe TIM and KIM systems watch your effluent pond, pumps and irrigators, shutting down the instant something's wrong. Weather stations, water bores, tanks and fence monitoring too.</p>
+          <a class="more" href="#contact">Ask about Farmtrenz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="ph"><span class="tag">Footprint</span><img src="img/b5.jpg" alt="Shoppers walking through a store doorway, counted by a Footprint people counter" loading="lazy" width="2000" height="527"></div>
+        <div class="body">
+          <h3>People counters</h3>
+          <p>The Footprint RCU4 counts foot traffic through single or multiple doors in shops, malls, pools and museums — so you can lift conversion and plan staff rosters around real numbers.</p>
+          <a class="more" href="#contact">Ask about Footprint <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="ph"><span class="tag">Safety Breed</span><img src="img/b6.jpg" alt="A mare and newborn foal in a paddock" loading="lazy" width="2000" height="527"></div>
+        <div class="body">
+          <h3>Foaling alarms</h3>
+          <p>Safety Breed gives horse owners peace of mind at foaling time, alerting you the moment your mare is about to foal — with a text-alert option so you never miss it.</p>
+          <a class="more" href="#contact">Ask about Safety Breed <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="ph"><span class="tag">SCADA</span><img src="img/b4.jpg" alt="Close-up of a circuit board designed by Electronic Specialists" loading="lazy" width="2000" height="527"></div>
+        <div class="body">
+          <h3>Telemetry &amp; SCADA systems</h3>
+          <p>UHF telemetry and GSM networking that put remote control, data logging and text alerts on the processes that matter — on the farm, at the factory or across a whole site.</p>
+          <a class="more" href="#contact">Talk telemetry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="ph"><span class="tag">In-house</span><img src="img/blog.jpg" alt="Effluent pump and pipework in the field" loading="lazy" width="555" height="269"></div>
+        <div class="body">
+          <h3>Custom design &amp; manufacture</h3>
+          <p>Got a problem electronics could solve? We've been inventing serial-data, monitoring and control gear for 40 years. Bring us the need and we'll design, build and prove it.</p>
+          <a class="more" href="#contact">Start a project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </article>
+      <article class="card reveal" id="products">
+        <div class="ph"><span class="tag">Support</span><img src="img/b1.jpg" alt="Southland farmland where Electronic Specialists systems are installed" loading="lazy" width="2000" height="527"></div>
+        <div class="body">
+          <h3>Service &amp; installation</h3>
+          <p>We service what we sell, with authorised installers available near you. Commissioning, spares and back-up from the team who designed the hardware in the first place.</p>
+          <a class="more" href="#contact">Get support <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- about -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="split">
+      <div class="about-media reveal">
+        <img src="img/b4.jpg" alt="Circuit board detail from an Electronic Specialists device" loading="lazy" width="2000" height="527">
+        <div class="badge"><b>1985</b><span>Building electronics since</span></div>
+      </div>
+      <div class="about-copy reveal">
+        <span class="eyebrow">Who we are</span>
+        <h2>Forty years of serious Kiwi electronics</h2>
+        <p>Electronic Specialists is an Invercargill design and manufacturing company building telemetry and SCADA automation for the agricultural, industrial and retail sectors. We've been at it since 1985, with deep experience in serial-data communication and a range of monitoring, remote-control, data-logging and text-alert products.</p>
+        <p>Our Farmtrenz division builds the fail-safe TIM and KIM effluent field devices — a market leader for over ten years — while Footprint people counters have run in shops and museums worldwide for 20-plus years. If electronics can solve it, chances are we've built something for it, or we can.</p>
+        <ul class="checklist">
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>NZ owned &amp; operating since 1985</b> — designed and manufactured right here in Southland.</span></li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Fail-safe field-proven gear</b> — the latest UHF telemetry and GSM networking, hardened for real conditions.</span></li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>We service what we sell</b> — with authorised installers available near you.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- team -->
+<section class="team">
+  <div class="wrap">
+    <div class="section-head reveal" style="max-width:none;text-align:center;margin-left:auto;margin-right:auto">
+      <span class="badge-pill">Example team</span>
+      <h2>The people behind the hardware</h2>
+      <p style="margin:0 auto;max-width:560px">A small, hands-on Southland team who design, build and stand behind every board that leaves the workshop.</p>
+    </div>
+    <div class="team-grid">
+      <div class="member reveal">
+        <div class="avatar">DE</div>
+        <h3>Design Engineer</h3>
+        <div class="role">Design &amp; R&amp;D</div>
+        <p>Turns a real-world problem on the farm or shop floor into circuitry, firmware and a device that survives the field.</p>
+      </div>
+      <div class="member reveal">
+        <div class="avatar">MA</div>
+        <h3>Manufacturing &amp; Assembly</h3>
+        <div class="role">Build &amp; test</div>
+        <p>Hand-builds and bench-tests every unit in Invercargill, so the gear that ships is the gear that's been proven.</p>
+      </div>
+      <div class="member reveal">
+        <div class="avatar">SS</div>
+        <h3>Service &amp; Support</h3>
+        <div class="role">Install &amp; back-up</div>
+        <p>Handles commissioning, spares and the phone when you call — plus a network of authorised installers around NZ.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- reviews -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">In their words</span>
+      <h2>What Kiwi farmers say about our gear</h2>
+      <p>Real testimonials from customers running our PondLink effluent systems day in, day out.</p>
+    </div>
+    <div class="rev-grid">
+      <article class="rev reveal">
+        <span class="quote" aria-hidden="true">&ldquo;</span>
+        <span class="stars" aria-label="5 out of 5">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9"/></svg>
+        </span>
+        <div class="kicker">TIM PondLink System</div>
+        <p>&ldquo;It's brilliant, it's been 100% reliable. It shuts the pump down when there's any problem. On one occasion our Williams travelling irrigator was moving too slow. We'd install one again.&rdquo;</p>
+        <div class="who"><b>Bill Davidson</b><span>Farm Owner &mdash; Ashurst, Manawatu</span></div>
+      </article>
+      <article class="rev reveal">
+        <span class="quote" aria-hidden="true">&ldquo;</span>
+        <span class="stars" aria-label="5 out of 5">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9"/></svg>
+        </span>
+        <div class="kicker">KIM PondLink System</div>
+        <p>&ldquo;It runs perfectly, I've had no problems. I don't have to worry about the effluent; if there's a split in a hose I know it will shut it down so it gives me peace of mind. With the software I can see exactly the trend for any shutdown; it narrows down the guess work.&rdquo;</p>
+        <div class="who"><b>Todd Shallue</b><span>Farm Manager &mdash; NZ Super Fund Southland Farms</span></div>
+      </article>
+    </div>
+    <div class="rev-actions reveal">
+      <a class="btn btn-dark" href="https://www.google.com/maps/search/Electronic+Specialists+73+Deveron+Street+Invercargill" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        See us on Google
+      </a>
+      <a class="btn btn-primary" href="https://www.google.com/maps/search/Electronic+Specialists+73+Deveron+Street+Invercargill" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9"/></svg>
+        Leave us a review
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- review banner -->
+<section class="rev-banner">
+  <div class="wrap inner">
+    <div>
+      <h2>Running our gear? Tell others how it's held up.</h2>
+      <p>A quick word from you helps the next farmer or retailer decide with confidence.</p>
+    </div>
+    <a class="btn btn-primary" href="https://www.google.com/maps/search/Electronic+Specialists+73+Deveron+Street+Invercargill" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9"/></svg>
+      Leave a Google review
+    </a>
+  </div>
+</section>
+
+<!-- contact -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow on-dark">Get in touch</span>
+        <h2>Let's talk about your project</h2>
+        <p class="lede">Got a monitoring headache, an effluent system to sort, or an idea electronics could solve? Give us a call or drop us a line — you'll be talking to the people who build the gear.</p>
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="lbl">Workshop</div><div class="val">73 Deveron Street, Invercargill 9810</div></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="lbl">Phone</div><a class="val" href="tel:022 682 9951">022 682 9951</a><div style="font-size:14px;color:rgba(255,255,255,.55);margin-top:2px">Office: (03) 218 2515</div></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="lbl">Email</div><a class="val" data-gmail data-user="chris" data-domain="especs.co.nz" href="#">chris@especs.co.nz</a></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div><div class="lbl">Hours</div><div class="val">Mon&ndash;Fri, 8:00am &ndash; 5:00pm</div></div>
+        </div>
+        <div class="socials">
+          <a href="https://www.facebook.com/Farmtrenz/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="https://www.instagram.com/explore/search/keyword/?q=Electronic%20Specialists%20Invercargill" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="https://www.linkedin.com/search/results/companies/?keywords=Electronic%20Specialists%20Invercargill" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.5 8h4V24h-4V8zM8.5 8h3.84v2.19h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V24h-4v-6.84c0-1.63-.03-3.73-2.27-3.73-2.27 0-2.62 1.78-2.62 3.61V24h-4V8z"/></svg></a>
+        </div>
+      </div>
+      <div class="contact-card reveal">
+        <h3>Two quick ways to reach us</h3>
+        <p>Call the workshop for a straight answer, or fire off an email and we'll get back to you.</p>
+        <a class="btn btn-primary" href="tel:022 682 9951">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call 022 682 9951
+        </a>
+        <a class="btn btn-ghost" data-gmail data-user="chris" data-domain="especs.co.nz" data-su="Enquiry%20from%20your%20website" data-body="Hi%20Electronic%20Specialists%2C%0A%0AI%27d%20like%20to%20talk%20about%3A%0A%0A%0AName%3A%0APhone%3A" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email us your project
+        </a>
+        <p class="fineprint">Southland based &middot; supporting customers NZ-wide since 1985</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- map -->
+<section class="map-sec">
+  <div class="map-wrap">
+    <div class="frame">
+      <iframe title="Electronic Specialists location — 73 Deveron Street, Invercargill" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=73%20Deveron%20Street%2C%20Invercargill%2C%20New%20Zealand&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="img/logo.png" alt="Electronic Specialists">
+        <p>Electronics design and manufacturing in Invercargill since 1985 — telemetry, SCADA and fail-safe monitoring for farms, factories and shops across New Zealand.</p>
+        <div class="foot-social">
+          <a href="https://www.facebook.com/Farmtrenz/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="https://www.instagram.com/explore/search/keyword/?q=Electronic%20Specialists%20Invercargill" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="https://www.linkedin.com/search/results/companies/?keywords=Electronic%20Specialists%20Invercargill" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.5 8h4V24h-4V8zM8.5 8h3.84v2.19h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V24h-4v-6.84c0-1.63-.03-3.73-2.27-3.73-2.27 0-2.62 1.78-2.62 3.61V24h-4V8z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>What we do</h4>
+        <a href="#services">Farm monitoring</a>
+        <a href="#services">People counters</a>
+        <a href="#services">Foaling alarms</a>
+        <a href="#services">Telemetry &amp; SCADA</a>
+        <a href="#services">Custom electronics</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="#about">About us</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="yr"></span> Electronic Specialists, Invercargill. All rights reserved.</span>
+      <span><a href="terms.html">Terms</a> &nbsp;&middot;&nbsp; <a href="privacy.html">Privacy</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // intro
+  window.addEventListener('load',function(){setTimeout(function(){document.body.classList.add('loaded');},650);});
+  document.addEventListener('DOMContentLoaded',function(){setTimeout(function(){document.body.classList.add('loaded');},1500);});
+
+  // year
+  var yr=document.getElementById('yr'); if(yr) yr.textContent=(new Date()).getFullYear();
+
+  // header scroll
+  var header=document.getElementById('header');
+  function onScroll(){ if(window.scrollY>40) header.classList.add('scrolled'); else header.classList.remove('scrolled'); }
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+
+  // mobile menu
+  var burger=document.getElementById('burger'), menu=document.getElementById('mobile-menu'), ov=document.getElementById('m-overlay');
+  function toggle(open){ menu.classList.toggle('open',open); ov.classList.toggle('open',open); document.body.classList.toggle('menu-open',open); burger.setAttribute('aria-expanded',open);}
+  burger.addEventListener('click',function(){toggle(!menu.classList.contains('open'));});
+  ov.addEventListener('click',function(){toggle(false);});
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){toggle(false);});});
+
+  // gmail compose links (built in JS so the address is never raw in the HTML)
+  document.querySelectorAll('a[data-gmail]').forEach(function(a){
+    var to=a.getAttribute('data-user')+'@'+a.getAttribute('data-domain');
+    a.href='https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(to)+'&su='+(a.getAttribute('data-su')||'')+'&body='+(a.getAttribute('data-body')||'');
+    a.target='_blank'; a.rel='noopener';
+  });
+
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  // hero rotation
+  var slides=document.querySelectorAll('.hero-bg .slide');
+  slides.forEach(function(s){ var bg=s.getAttribute('data-bg'); if(bg){ var i=new Image(); i.src=bg; s.style.backgroundImage="url('"+bg+"')"; }});
+  if(!reduce && slides.length>1){
+    var idx=0;
+    setInterval(function(){ slides[idx].classList.remove('active'); idx=(idx+1)%slides.length; slides[idx].classList.add('active'); },5500);
+  }
+
+  // reveal on scroll
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
