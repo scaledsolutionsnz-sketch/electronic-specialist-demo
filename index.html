@@ -313,29 +313,40 @@ footer{background:#060f1e;color:rgba(255,255,255,.62);padding:64px 0 30px}
 .dl:hover .dl-arrow{color:var(--accent);transform:translateY(2px)}
 @media(max-width:860px){.fp-split{grid-template-columns:1fr;gap:32px}}
 
-/* ---------- downloads library ---------- */
+/* ---------- downloads / accordion ---------- */
 .downloads-lib{background:var(--bone)}
-.dlib-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
-.dlib-col{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
-  padding:26px;box-shadow:var(--shadow)}
-.dlib-col .eyebrow{display:block;margin-bottom:8px}
-.dlib-col h3{font-size:19px;margin-bottom:2px}
-.dlib-col>p{margin:6px 0 4px;font-size:14px;color:var(--muted)}
-.dlib-list{list-style:none;margin:14px 0 0;padding:0}
-.dlib-list li+li{border-top:1px solid var(--line)}
-.dlr{display:flex;align-items:center;gap:13px;padding:13px 0;transition:padding-left .16s ease}
-.dlr:hover{padding-left:6px}
-.dlr-thumb{flex:none;width:58px;height:46px;border-radius:9px;object-fit:cover;object-position:center;
-  background:#fff;border:1px solid var(--line);transition:transform .16s ease}
-.dlr:hover .dlr-thumb{transform:scale(1.04)}
-.dlr-meta{flex:1;min-width:0}
-.dlr-meta b{display:block;font-family:"Space Grotesk",sans-serif;font-size:14.5px;font-weight:600;color:var(--ink)}
-.dlr-meta span{display:block;font-size:12px;color:var(--muted);letter-spacing:.02em}
-.dlr-arrow{flex:none;color:var(--muted);transition:color .16s ease,transform .16s ease}
-.dlr-arrow svg{width:18px;height:18px}
-.dlr:hover .dlr-arrow{color:var(--accent-d);transform:translateY(2px)}
-.dlr:hover .dlr-meta b{color:var(--accent-d)}
-@media(max-width:920px){.dlib-grid{grid-template-columns:1fr;gap:20px}}
+.acc-group{margin-bottom:46px}
+.acc-group:last-child{margin-bottom:0}
+.acc-group .eyebrow{display:block;margin-bottom:6px}
+.acc-group>h3{font-size:clamp(22px,3vw,28px);margin-bottom:8px}
+.acc-group>p{margin:0 0 20px;font-size:15.5px;color:var(--body);max-width:640px}
+.acc-item{background:var(--white);border:1px solid var(--line);border-radius:12px;
+  margin-bottom:12px;overflow:hidden;transition:border-color .18s ease,box-shadow .18s ease}
+.acc-item.open{border-color:rgba(37,207,226,.55);box-shadow:var(--shadow)}
+.acc-head{width:100%;display:flex;align-items:center;gap:16px;padding:18px 22px;
+  background:none;border:0;cursor:pointer;text-align:left;color:var(--ink)}
+.acc-head:hover{background:var(--bone)}
+.acc-head .htext{flex:1;min-width:0}
+.acc-head .htext b{display:block;font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:17px}
+.acc-head .htext small{display:block;font-size:12.5px;color:var(--muted);margin-top:3px;letter-spacing:.02em}
+.acc-head .chev{flex:none;color:var(--accent-d);transition:transform .28s ease}
+.acc-head .chev svg{width:22px;height:22px;display:block}
+.acc-item.open .chev{transform:rotate(180deg)}
+.acc-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
+.acc-item.open .acc-panel{grid-template-rows:1fr}
+.acc-panel>.acc-wrap{overflow:hidden;min-height:0}
+.acc-inner{display:flex;gap:28px;padding:2px 22px 24px;align-items:flex-start;border-top:1px solid var(--line)}
+.acc-copy{flex:1;min-width:0;padding-top:18px}
+.acc-copy p{margin:0 0 16px;font-size:15.5px;color:var(--body)}
+.acc-media{flex:none;width:240px;max-width:42%;padding-top:18px}
+.acc-media img{width:100%;border-radius:10px;border:1px solid var(--line);background:#fff}
+.acc-files{display:flex;flex-wrap:wrap;gap:10px}
+.acc-dl{display:inline-flex;align-items:center;gap:9px;font-family:"Space Grotesk",sans-serif;
+  font-weight:600;font-size:14px;padding:11px 18px;border-radius:11px;background:var(--ink);color:#fff;
+  transition:transform .16s ease,background .16s ease,color .16s ease}
+.acc-dl:hover{transform:translateY(-2px);background:var(--accent);color:var(--accent-ink)}
+.acc-dl svg{width:16px;height:16px;flex:none}
+@media(max-width:720px){.acc-inner{flex-direction:column-reverse;gap:0}.acc-media{width:100%;max-width:none}}
 </style>
 </head>
 <body>
@@ -547,50 +558,185 @@ footer{background:#060f1e;color:rgba(255,255,255,.62);padding:64px 0 30px}
     <div class="section-head reveal">
       <span class="eyebrow">Resources</span>
       <h2>Product brochures &amp; downloads</h2>
-      <p>Spec sheets, brochures and software for every product line, all in one place. Click any file to download.</p>
+      <p>Spec sheets, brochures and software for every product line. Click a product to read about it and download its brochure.</p>
     </div>
-    <div class="dlib-grid">
+    <div class="acc-groups">
 
-      <div class="dlib-col reveal">
+      <div class="acc-group reveal">
         <span class="eyebrow">Farmtrenz</span>
         <h3>Effluent &amp; farm monitoring</h3>
-        <p>TIM &amp; KIM alarms, telemetry, tank, pond and fence monitoring.</p>
-        <ul class="dlib-list">
-          <li><a class="dlr" href="downloads/TIM_brochure_2018.pdf" target="_blank" rel="noopener" download><img class="dlr-thumb" src="img/products/tim.jpg" alt="TIM effluent alarm unit" loading="lazy"><span class="dlr-meta"><b>TIM effluent alarm</b><span>Brochure &middot; 366 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
-          <li><a class="dlr" href="downloads/KIM_brochure_2018.pdf" target="_blank" rel="noopener" download><img class="dlr-thumb" src="img/products/kim.jpg" alt="KIM effluent alarm unit" loading="lazy"><span class="dlr-meta"><b>KIM effluent alarm</b><span>Brochure &middot; 376 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
-          <li><a class="dlr" href="downloads/Smart_Txt_A4_brochure_v5.pdf" target="_blank" rel="noopener" download><img class="dlr-thumb" src="img/products/smart-txt.jpg" alt="Smart Txt unit" loading="lazy"><span class="dlr-meta"><b>Smart Txt</b><span>Brochure &middot; 304 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
-          <li><a class="dlr" href="downloads/Text_Unit_A4_brochure.pdf" target="_blank" rel="noopener" download><img class="dlr-thumb" src="img/products/text-unit.png" alt="Text Unit" loading="lazy"><span class="dlr-meta"><b>Text Unit</b><span>Brochure &middot; 332 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
-          <li><a class="dlr" href="downloads/Text_Unit_connectivity_overview_v2.pdf" target="_blank" rel="noopener" download><img class="dlr-thumb" src="img/products/text-unit.png" alt="Text Unit connectivity" loading="lazy"><span class="dlr-meta"><b>Text Unit connectivity</b><span>Overview &middot; 789 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
-          <li><a class="dlr" href="downloads/HUB_brochure_2016.pdf" target="_blank" rel="noopener" download><img class="dlr-thumb" src="img/products/hub.jpg" alt="Farmtrenz HUB" loading="lazy"><span class="dlr-meta"><b>HUB</b><span>Brochure &middot; 271 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
-          <li><a class="dlr" href="downloads/PIM_photo_brochure_FTZ_A4.pdf" target="_blank" rel="noopener" download><img class="dlr-thumb" src="img/products/pim.jpg" alt="PIM unit" loading="lazy"><span class="dlr-meta"><b>PIM</b><span>Photo brochure &middot; 446 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
-          <li><a class="dlr" href="downloads/Tank_Monitor_brochure_v170301.pdf" target="_blank" rel="noopener" download><img class="dlr-thumb" src="img/products/tank-monitor.jpg" alt="Tank Monitor units" loading="lazy"><span class="dlr-meta"><b>Tank Monitor</b><span>Brochure &middot; 229 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
-          <li><a class="dlr" href="downloads/Tank_Link_brochure_FTZ_A4_v2.pdf" target="_blank" rel="noopener" download><img class="dlr-thumb" src="img/products/tank-link.png" alt="Tank Link receiver" loading="lazy"><span class="dlr-meta"><b>Tank Link</b><span>Brochure &middot; 303 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
-          <li><a class="dlr" href="downloads/Vat_Monitor_v2016.pdf" target="_blank" rel="noopener" download><img class="dlr-thumb" src="img/products/vat-monitor.jpg" alt="Vat Monitor" loading="lazy"><span class="dlr-meta"><b>Vat Monitor</b><span>Brochure &middot; 575 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
-          <li><a class="dlr" href="downloads/PondLink_info_v170301.pdf" target="_blank" rel="noopener" download><img class="dlr-thumb" src="img/products/pondlink.png" alt="PondLink unit" loading="lazy"><span class="dlr-meta"><b>PondLink</b><span>Info sheet &middot; 324 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
-          <li><a class="dlr" href="downloads/WES_brochure_2016.pdf" target="_blank" rel="noopener" download><img class="dlr-thumb" src="img/products/wes.jpg" alt="Weather Station" loading="lazy"><span class="dlr-meta"><b>Weather Station (WES)</b><span>Brochure &middot; 253 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
-          <li><a class="dlr" href="downloads/Fence_Monitor_brochure_FTZ_2016.pdf" target="_blank" rel="noopener" download><img class="dlr-thumb" src="img/products/fence-monitor.jpg" alt="Fence Monitor on post" loading="lazy"><span class="dlr-meta"><b>Fence Monitor</b><span>Brochure &middot; 847 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
-        </ul>
+        <p>Fail-safe TIM &amp; KIM effluent alarms, telemetry, and tank, pond and fence monitoring. Tap any product to read about it and grab the brochure.</p>
+
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="htext"><b>TIM effluent alarm</b><small>Travelling Irrigator Monitor</small></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-panel"><div class="acc-wrap"><div class="acc-inner">
+            <div class="acc-copy">
+              <p>TIM stands for Travelling Irrigator Monitor. Our marquee fail-safe product monitors pressure and speed in the paddock, stopping the effluent pump when the irrigator reaches the end of travel and if the cable breaks.</p>
+              <div class="acc-files"><a class="acc-dl" href="downloads/TIM_brochure_2018.pdf" target="_blank" rel="noopener" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Brochure (PDF, 366 KB)</a></div>
+            </div>
+            <div class="acc-media"><img src="img/products/tim.jpg" alt="TIM effluent alarm unit" loading="lazy"></div>
+          </div></div></div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="htext"><b>KIM effluent alarm</b><small>K-line Irrigator Monitor</small></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-panel"><div class="acc-wrap"><div class="acc-inner">
+            <div class="acc-copy">
+              <p>KIM stands for K-line Irrigator Monitor. A fail-safe effluent device for low application rate pods or mini rainguns, KIM monitors effluent pipeline pressure in the paddock, not back at the pump, and stops the pump when a blockage or leakage is detected.</p>
+              <div class="acc-files"><a class="acc-dl" href="downloads/KIM_brochure_2018.pdf" target="_blank" rel="noopener" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Brochure (PDF, 376 KB)</a></div>
+            </div>
+            <div class="acc-media"><img src="img/products/kim.jpg" alt="KIM effluent alarm unit" loading="lazy"></div>
+          </div></div></div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="htext"><b>Text Unit</b><small>Text alerts to your cellphone</small></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-panel"><div class="acc-wrap"><div class="acc-inner">
+            <div class="acc-copy">
+              <p>Text Unit sends text alerts to your cellphone, relayed from our Hub controller, when it senses something wrong with the operation of your effluent, vat or water systems equipped with Farmtrenz monitoring field devices.</p>
+              <div class="acc-files"><a class="acc-dl" href="downloads/Text_Unit_A4_brochure.pdf" target="_blank" rel="noopener" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Brochure (PDF, 332 KB)</a><a class="acc-dl" href="downloads/Text_Unit_connectivity_overview_v2.pdf" target="_blank" rel="noopener" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Connectivity overview (PDF, 789 KB)</a></div>
+            </div>
+            <div class="acc-media"><img src="img/products/text-unit.png" alt="Text Unit" loading="lazy"></div>
+          </div></div></div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="htext"><b>Smart Txt</b><small>Text back level &amp; temperature readings</small></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-panel"><div class="acc-wrap"><div class="acc-inner">
+            <div class="acc-copy">
+              <p>Smart Txt is a text alert unit for water tanks, effluent tanks and milk vats. Send a text from your cellphone and it will text back with level or temperature readings, instantly.</p>
+              <div class="acc-files"><a class="acc-dl" href="downloads/Smart_Txt_A4_brochure_v5.pdf" target="_blank" rel="noopener" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Brochure (PDF, 304 KB)</a></div>
+            </div>
+            <div class="acc-media"><img src="img/products/smart-txt.jpg" alt="Smart Txt unit" loading="lazy"></div>
+          </div></div></div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="htext"><b>HUB</b><small>Central controller for all systems</small></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-panel"><div class="acc-wrap"><div class="acc-inner">
+            <div class="acc-copy">
+              <p>Hub, as its name implies, is the central brain or controller for all Farmtrenz monitoring systems. Wall-mounted in the cowshed or central office, the Hub receives signals from all connected field devices and monitors their performance.</p>
+              <div class="acc-files"><a class="acc-dl" href="downloads/HUB_brochure_2016.pdf" target="_blank" rel="noopener" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Brochure (PDF, 271 KB)</a></div>
+            </div>
+            <div class="acc-media"><img src="img/products/hub.jpg" alt="Farmtrenz HUB" loading="lazy"></div>
+          </div></div></div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="htext"><b>PIM</b><small>Pivot Irrigator Monitor</small></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-panel"><div class="acc-wrap"><div class="acc-inner">
+            <div class="acc-copy">
+              <p>PIM stands for Pivot Irrigator Monitor. Designed for large farms using centre pivot water irrigators with underslung effluent lines, PIM monitors effluent pressure through droppers or rainguns.</p>
+              <div class="acc-files"><a class="acc-dl" href="downloads/PIM_photo_brochure_FTZ_A4.pdf" target="_blank" rel="noopener" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Photo brochure (PDF, 446 KB)</a></div>
+            </div>
+            <div class="acc-media"><img src="img/products/pim.jpg" alt="PIM unit" loading="lazy"></div>
+          </div></div></div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="htext"><b>Tank Monitor</b><small>Water tank level &amp; flow</small></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-panel"><div class="acc-wrap"><div class="acc-inner">
+            <div class="acc-copy">
+              <p>Measures the level of water in a tank or tanks. It can also measure water flow rate from bore to tank or trough when connected to a magnetic or mechanical/paddle flow meter. Ideal for water permits requiring usage monitoring when combined with GUI software.</p>
+              <div class="acc-files"><a class="acc-dl" href="downloads/Tank_Monitor_brochure_v170301.pdf" target="_blank" rel="noopener" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Brochure (PDF, 229 KB)</a></div>
+            </div>
+            <div class="acc-media"><img src="img/products/tank-monitor.jpg" alt="Tank Monitor units" loading="lazy"></div>
+          </div></div></div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="htext"><b>Tank Link</b><small>Remote hilltop tank control</small></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-panel"><div class="acc-wrap"><div class="acc-inner">
+            <div class="acc-copy">
+              <p>Controls and monitors the filling of remote hilltop water tanks. Automatically turns on the pump when the tank level is low and turns it off when the level reaches the high setpoint. No more worrying if stock run out of water.</p>
+              <div class="acc-files"><a class="acc-dl" href="downloads/Tank_Link_brochure_FTZ_A4_v2.pdf" target="_blank" rel="noopener" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Brochure (PDF, 303 KB)</a></div>
+            </div>
+            <div class="acc-media"><img src="img/products/tank-link.png" alt="Tank Link receiver" loading="lazy"></div>
+          </div></div></div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="htext"><b>Vat Monitor</b><small>Milk temperature &amp; MPI compliance</small></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-panel"><div class="acc-wrap"><div class="acc-inner">
+            <div class="acc-copy">
+              <p>Vat Monitor monitors milk temperature and multiple cooler, vat wash and tap sensors. Meets new MPI milk regulations: data is logged and viewable historically and in real time on Farmtrenz software.</p>
+              <div class="acc-files"><a class="acc-dl" href="downloads/Vat_Monitor_v2016.pdf" target="_blank" rel="noopener" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Brochure (PDF, 575 KB)</a></div>
+            </div>
+            <div class="acc-media"><img src="img/products/vat-monitor.jpg" alt="Vat Monitor" loading="lazy"></div>
+          </div></div></div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="htext"><b>PondLink</b><small>Pump protection at the pond</small></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-panel"><div class="acc-wrap"><div class="acc-inner">
+            <div class="acc-copy">
+              <p>PondLink is the pond to shed remote link to the Hub that controls all connected pumps used for effluent irrigation, transfer and agitation. Located at the contactor cabinet in the pump shed, it protects pumps from over-pressure and running dry, including loss of prime.</p>
+              <div class="acc-files"><a class="acc-dl" href="downloads/PondLink_info_v170301.pdf" target="_blank" rel="noopener" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Info sheet (PDF, 324 KB)</a></div>
+            </div>
+            <div class="acc-media"><img src="img/products/pondlink.png" alt="PondLink unit" loading="lazy"></div>
+          </div></div></div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="htext"><b>Weather Station (WES)</b><small>On-farm weather &amp; soil data</small></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-panel"><div class="acc-wrap"><div class="acc-inner">
+            <div class="acc-copy">
+              <p>Measures soil moisture, soil temperature, rainfall, air temperature, wind direction, wind speed and humidity. Includes a solar panel for charging the battery.</p>
+              <div class="acc-files"><a class="acc-dl" href="downloads/WES_brochure_2016.pdf" target="_blank" rel="noopener" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Brochure (PDF, 253 KB)</a></div>
+            </div>
+            <div class="acc-media"><img src="img/products/wes.jpg" alt="Weather Station" loading="lazy"></div>
+          </div></div></div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="htext"><b>Fence Monitor</b><small>Electric fence voltage alerts</small></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-panel"><div class="acc-wrap"><div class="acc-inner">
+            <div class="acc-copy">
+              <p>Measures volts on a remote electric fence line, with an adjustable low-voltage setpoint. Know when there's a fence outage and avoid a potential stock break-out.</p>
+              <div class="acc-files"><a class="acc-dl" href="downloads/Fence_Monitor_brochure_FTZ_2016.pdf" target="_blank" rel="noopener" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Brochure (PDF, 847 KB)</a></div>
+            </div>
+            <div class="acc-media"><img src="img/products/fence-monitor.jpg" alt="Fence Monitor on post" loading="lazy"></div>
+          </div></div></div>
+        </div>
       </div>
 
-      <div class="dlib-col reveal">
+      <div class="acc-group reveal">
         <span class="eyebrow">Footprint</span>
         <h3>People counters</h3>
-        <p>Everything for the Footprint RCU4 people counter.</p>
-        <ul class="dlib-list">
-          <li><a class="dlr" href="downloads/Footprint_brochure_2017.pdf" target="_blank" rel="noopener" download><img class="dlr-thumb" src="img/products/footprint-rcu4.jpg" alt="Footprint RCU4 people counter" loading="lazy"><span class="dlr-meta"><b>Footprint brochure</b><span>Product overview &middot; 263 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
-          <li><a class="dlr" href="downloads/PeopleCounter_Operator_Manual.pdf" target="_blank" rel="noopener" download><img class="dlr-thumb" src="img/products/footprint-rcu4.jpg" alt="Footprint RCU4 people counter" loading="lazy"><span class="dlr-meta"><b>Installation manual</b><span>Operator manual &middot; 8 pages &middot; 276 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
-          <li><a class="dlr" href="downloads/FootprintRCU4_V4_5.exe" download><img class="dlr-thumb" src="img/products/footprint-rcu4.jpg" alt="Footprint RCU4 people counter" loading="lazy"><span class="dlr-meta"><b>Programme download</b><span>FootprintRCU4 V4.5 &middot; Windows &middot; 1.0 MB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
-          <li><a class="dlr" href="downloads/CP210x_VCP_Windows.zip" download><img class="dlr-thumb" src="img/products/footprint-rcu4.jpg" alt="Footprint RCU4 people counter" loading="lazy"><span class="dlr-meta"><b>USB driver</b><span>CP210x VCP for Windows &middot; 3.7 MB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
-        </ul>
+        <p>Everything for the Footprint RCU4 people counter, the brochure, operator manual, PC software and USB driver.</p>
+
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="htext"><b>Footprint RCU4 people counter</b><small>Brochure, manual, software &amp; driver</small></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-panel"><div class="acc-wrap"><div class="acc-inner">
+            <div class="acc-copy">
+              <p>The Footprint RCU4 counts foot traffic through single or multiple doors in shops, malls, pools and museums. It monitors up to four separate doors at once, with hour, day, week, month and year totals, and stores up to a week of data on-board so nothing is lost if your PC goes down.</p>
+              <div class="acc-files">
+                <a class="acc-dl" href="downloads/Footprint_brochure_2017.pdf" target="_blank" rel="noopener" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Brochure (PDF, 263 KB)</a>
+                <a class="acc-dl" href="downloads/PeopleCounter_Operator_Manual.pdf" target="_blank" rel="noopener" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Installation manual (PDF, 276 KB)</a>
+                <a class="acc-dl" href="downloads/FootprintRCU4_V4_5.exe" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Programme (EXE, 1.0 MB)</a>
+                <a class="acc-dl" href="downloads/CP210x_VCP_Windows.zip" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>USB driver (ZIP, 3.7 MB)</a>
+              </div>
+            </div>
+            <div class="acc-media"><img src="img/products/footprint-rcu4.jpg" alt="Footprint RCU4 people counter" loading="lazy"></div>
+          </div></div></div>
+        </div>
       </div>
 
-      <div class="dlib-col reveal">
+      <div class="acc-group reveal">
         <span class="eyebrow">Safety Breed</span>
         <h3>Foaling alarms</h3>
-        <p>Foaling alarm system for horse owners and breeders.</p>
-        <ul class="dlib-list">
-          <li><a class="dlr" href="downloads/Safety_Breed_foaling_alarm_Brochure_05_08_2021.pdf" target="_blank" rel="noopener" download><img class="dlr-thumb" src="img/products/safety-breed.jpg" alt="Safety Breed foaling alarm" loading="lazy"><span class="dlr-meta"><b>Safety Breed foaling alarm</b><span>Brochure &middot; 326 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
-        </ul>
+        <p>The interference-free foaling alarm system for horse owners and breeders.</p>
+
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="htext"><b>Safety Breed foaling alarm</b><small>Foaling alarm system</small></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="acc-panel"><div class="acc-wrap"><div class="acc-inner">
+            <div class="acc-copy">
+              <p>Worried about your mare foaling by herself? The interference-free Safety Breed foaling alarm gives you peace of mind. New Zealand made for New Zealand conditions, it uses digital muting and triple error checking for unsurpassed reliability, with a typical range of around 250 metres (extendable), support for unlimited transmitters on one receiver, and an optional texting module for long-distance monitoring.</p>
+              <div class="acc-files"><a class="acc-dl" href="downloads/Safety_Breed_foaling_alarm_Brochure_05_08_2021.pdf" target="_blank" rel="noopener" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Brochure (PDF, 326 KB)</a></div>
+            </div>
+            <div class="acc-media"><img src="img/products/safety-breed.jpg" alt="Safety Breed foaling alarm" loading="lazy"></div>
+          </div></div></div>
+        </div>
       </div>
 
     </div>
@@ -842,6 +988,15 @@ footer{background:#060f1e;color:rgba(255,255,255,.62);padding:64px 0 30px}
     entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
   },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // downloads accordion
+  document.querySelectorAll('.acc-head').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.acc-item');
+      var open = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
 })();
 </script>
 </body>
