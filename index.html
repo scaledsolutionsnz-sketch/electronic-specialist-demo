@@ -312,6 +312,33 @@ footer{background:#060f1e;color:rgba(255,255,255,.62);padding:64px 0 30px}
 .dl-arrow svg{width:20px;height:20px}
 .dl:hover .dl-arrow{color:var(--accent);transform:translateY(2px)}
 @media(max-width:860px){.fp-split{grid-template-columns:1fr;gap:32px}}
+
+/* ---------- downloads library ---------- */
+.downloads-lib{background:var(--bone)}
+.dlib-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+.dlib-col{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px;box-shadow:var(--shadow)}
+.dlib-col .eyebrow{display:block;margin-bottom:8px}
+.dlib-col h3{font-size:19px;margin-bottom:2px}
+.dlib-col>p{margin:6px 0 4px;font-size:14px;color:var(--muted)}
+.dlib-list{list-style:none;margin:14px 0 0;padding:0}
+.dlib-list li+li{border-top:1px solid var(--line)}
+.dlr{display:flex;align-items:center;gap:13px;padding:13px 0;transition:padding-left .16s ease}
+.dlr:hover{padding-left:6px}
+.dlr .ext{flex:none;width:42px;height:42px;border-radius:10px;display:grid;place-items:center;
+  font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:11px;letter-spacing:.03em;
+  background:rgba(37,207,226,.12);color:var(--accent-d)}
+.dlr .ext.pdf{background:rgba(226,60,60,.1);color:#c23a3a}
+.dlr .ext.exe{background:rgba(37,207,226,.12);color:var(--accent-d)}
+.dlr .ext.zip{background:rgba(120,90,220,.1);color:#6a52c9}
+.dlr-meta{flex:1;min-width:0}
+.dlr-meta b{display:block;font-family:"Space Grotesk",sans-serif;font-size:14.5px;font-weight:600;color:var(--ink)}
+.dlr-meta span{display:block;font-size:12px;color:var(--muted);letter-spacing:.02em}
+.dlr-arrow{flex:none;color:var(--muted);transition:color .16s ease,transform .16s ease}
+.dlr-arrow svg{width:18px;height:18px}
+.dlr:hover .dlr-arrow{color:var(--accent-d);transform:translateY(2px)}
+.dlr:hover .dlr-meta b{color:var(--accent-d)}
+@media(max-width:920px){.dlib-grid{grid-template-columns:1fr;gap:20px}}
 </style>
 </head>
 <body>
@@ -329,6 +356,7 @@ footer{background:#060f1e;color:rgba(255,255,255,.62);padding:64px 0 30px}
     <nav class="nav-links">
       <a href="#services">What we do</a>
       <a href="#products">Products</a>
+      <a href="#downloads">Downloads</a>
       <a href="#about">About</a>
       <a href="#reviews">Reviews</a>
       <a href="#contact">Contact</a>
@@ -345,6 +373,7 @@ footer{background:#060f1e;color:rgba(255,255,255,.62);padding:64px 0 30px}
 <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile">
   <a href="#services">What we do</a>
   <a href="#products">Products</a>
+  <a href="#downloads">Downloads</a>
   <a href="#about">About</a>
   <a href="#reviews">Reviews</a>
   <a href="#contact">Contact</a>
@@ -420,7 +449,7 @@ footer{background:#060f1e;color:rgba(255,255,255,.62);padding:64px 0 30px}
         <div class="body">
           <h3>Effluent &amp; farm monitoring</h3>
           <p>Our fail-safe TIM and KIM systems watch your effluent pond, pumps and irrigators, shutting down the instant something's wrong. Weather stations, water bores, tanks and fence monitoring too.</p>
-          <a class="more" href="#contact">Ask about Farmtrenz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a class="more" href="#downloads">Farmtrenz brochures <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </article>
       <article class="card reveal">
@@ -436,7 +465,7 @@ footer{background:#060f1e;color:rgba(255,255,255,.62);padding:64px 0 30px}
         <div class="body">
           <h3>Foaling alarms</h3>
           <p>Safety Breed gives horse owners peace of mind at foaling time, alerting you the moment your mare is about to foal — with a text-alert option so you never miss it.</p>
-          <a class="more" href="#contact">Ask about Safety Breed <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a class="more" href="#downloads">Safety Breed brochure <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </article>
       <article class="card reveal">
@@ -511,6 +540,62 @@ footer{background:#060f1e;color:rgba(255,255,255,.62);padding:64px 0 30px}
           <span class="dl-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span>
         </a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- downloads library -->
+<section class="downloads-lib" id="downloads">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Resources</span>
+      <h2>Product brochures &amp; downloads</h2>
+      <p>Spec sheets, brochures and software for every product line, all in one place. Click any file to download.</p>
+    </div>
+    <div class="dlib-grid">
+
+      <div class="dlib-col reveal">
+        <span class="eyebrow">Farmtrenz</span>
+        <h3>Effluent &amp; farm monitoring</h3>
+        <p>TIM &amp; KIM alarms, telemetry, tank, pond and fence monitoring.</p>
+        <ul class="dlib-list">
+          <li><a class="dlr" href="downloads/TIM_brochure_2018.pdf" target="_blank" rel="noopener" download><span class="ext pdf">PDF</span><span class="dlr-meta"><b>TIM effluent alarm</b><span>Brochure &middot; 366 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
+          <li><a class="dlr" href="downloads/KIM_brochure_2018.pdf" target="_blank" rel="noopener" download><span class="ext pdf">PDF</span><span class="dlr-meta"><b>KIM effluent alarm</b><span>Brochure &middot; 376 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
+          <li><a class="dlr" href="downloads/Smart_Txt_A4_brochure_v5.pdf" target="_blank" rel="noopener" download><span class="ext pdf">PDF</span><span class="dlr-meta"><b>Smart Txt</b><span>Brochure &middot; 304 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
+          <li><a class="dlr" href="downloads/Text_Unit_A4_brochure.pdf" target="_blank" rel="noopener" download><span class="ext pdf">PDF</span><span class="dlr-meta"><b>Text Unit</b><span>Brochure &middot; 332 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
+          <li><a class="dlr" href="downloads/Text_Unit_connectivity_overview_v2.pdf" target="_blank" rel="noopener" download><span class="ext pdf">PDF</span><span class="dlr-meta"><b>Text Unit connectivity</b><span>Overview &middot; 789 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
+          <li><a class="dlr" href="downloads/HUB_brochure_2016.pdf" target="_blank" rel="noopener" download><span class="ext pdf">PDF</span><span class="dlr-meta"><b>HUB</b><span>Brochure &middot; 271 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
+          <li><a class="dlr" href="downloads/PIM_photo_brochure_FTZ_A4.pdf" target="_blank" rel="noopener" download><span class="ext pdf">PDF</span><span class="dlr-meta"><b>PIM</b><span>Photo brochure &middot; 446 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
+          <li><a class="dlr" href="downloads/Tank_Monitor_brochure_v170301.pdf" target="_blank" rel="noopener" download><span class="ext pdf">PDF</span><span class="dlr-meta"><b>Tank Monitor</b><span>Brochure &middot; 229 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
+          <li><a class="dlr" href="downloads/Tank_Link_brochure_FTZ_A4_v2.pdf" target="_blank" rel="noopener" download><span class="ext pdf">PDF</span><span class="dlr-meta"><b>Tank Link</b><span>Brochure &middot; 303 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
+          <li><a class="dlr" href="downloads/Vat_Monitor_v2016.pdf" target="_blank" rel="noopener" download><span class="ext pdf">PDF</span><span class="dlr-meta"><b>Vat Monitor</b><span>Brochure &middot; 575 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
+          <li><a class="dlr" href="downloads/PondLink_info_v170301.pdf" target="_blank" rel="noopener" download><span class="ext pdf">PDF</span><span class="dlr-meta"><b>PondLink</b><span>Info sheet &middot; 324 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
+          <li><a class="dlr" href="downloads/WES_brochure_2016.pdf" target="_blank" rel="noopener" download><span class="ext pdf">PDF</span><span class="dlr-meta"><b>Weather Station (WES)</b><span>Brochure &middot; 253 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
+          <li><a class="dlr" href="downloads/Fence_Monitor_brochure_FTZ_2016.pdf" target="_blank" rel="noopener" download><span class="ext pdf">PDF</span><span class="dlr-meta"><b>Fence Monitor</b><span>Brochure &middot; 847 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
+        </ul>
+      </div>
+
+      <div class="dlib-col reveal">
+        <span class="eyebrow">Footprint</span>
+        <h3>People counters</h3>
+        <p>Everything for the Footprint RCU4 people counter.</p>
+        <ul class="dlib-list">
+          <li><a class="dlr" href="downloads/Footprint_brochure_2017.pdf" target="_blank" rel="noopener" download><span class="ext pdf">PDF</span><span class="dlr-meta"><b>Footprint brochure</b><span>Product overview &middot; 263 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
+          <li><a class="dlr" href="downloads/PeopleCounter_Operator_Manual.pdf" target="_blank" rel="noopener" download><span class="ext pdf">PDF</span><span class="dlr-meta"><b>Installation manual</b><span>Operator manual &middot; 8 pages &middot; 276 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
+          <li><a class="dlr" href="downloads/FootprintRCU4_V4_5.exe" download><span class="ext exe">EXE</span><span class="dlr-meta"><b>Programme download</b><span>FootprintRCU4 V4.5 &middot; Windows &middot; 1.0 MB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
+          <li><a class="dlr" href="downloads/CP210x_VCP_Windows.zip" download><span class="ext zip">ZIP</span><span class="dlr-meta"><b>USB driver</b><span>CP210x VCP for Windows &middot; 3.7 MB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
+        </ul>
+      </div>
+
+      <div class="dlib-col reveal">
+        <span class="eyebrow">Safety Breed</span>
+        <h3>Foaling alarms</h3>
+        <p>Foaling alarm system for horse owners and breeders.</p>
+        <ul class="dlib-list">
+          <li><a class="dlr" href="downloads/Safety_Breed_foaling_alarm_Brochure_05_08_2021.pdf" target="_blank" rel="noopener" download><span class="ext pdf">PDF</span><span class="dlr-meta"><b>Safety Breed foaling alarm</b><span>Brochure &middot; 326 KB</span></span><span class="dlr-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span></a></li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </section>
