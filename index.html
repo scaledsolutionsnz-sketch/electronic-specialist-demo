@@ -280,6 +280,38 @@ footer{background:#060f1e;color:rgba(255,255,255,.62);padding:64px 0 30px}
   #intro .bar i{animation:none;width:100%}
   .reveal{transition:none;opacity:1;transform:none}
 }
+
+/* ---------- footprint product ---------- */
+.footprint{background:var(--navy);color:rgba(255,255,255,.82)}
+.footprint .section-head h2{color:var(--white)}
+.footprint .section-head p{color:rgba(255,255,255,.72)}
+.fp-split{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:start}
+.fp-copy p{margin:0 0 16px;font-size:16.5px;color:rgba(255,255,255,.78)}
+.fp-copy p:last-child{margin-bottom:0}
+.fp-feats{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:12px}
+.fp-feats li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;color:rgba(255,255,255,.82)}
+.fp-feats .tick{flex:none;width:22px;height:22px;border-radius:50%;background:rgba(37,207,226,.15);
+  color:var(--accent);display:grid;place-items:center;margin-top:2px}
+.fp-feats .tick svg{width:13px;height:13px}
+.fp-downloads{background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);
+  padding:26px;box-shadow:var(--shadow)}
+.fp-downloads h3{color:var(--white);font-size:20px;margin-bottom:6px}
+.fp-downloads>p{margin:0 0 20px;font-size:14.5px;color:rgba(255,255,255,.6)}
+.dl{display:flex;align-items:center;gap:16px;padding:15px 16px;border-radius:12px;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
+  transition:transform .16s ease,background .16s ease,border-color .16s ease}
+.dl+.dl{margin-top:12px}
+.dl:hover{transform:translateY(-2px);background:rgba(37,207,226,.06);border-color:rgba(37,207,226,.4)}
+.dl-ic{flex:none;width:44px;height:44px;border-radius:11px;background:rgba(37,207,226,.12);
+  color:var(--accent);display:grid;place-items:center}
+.dl-ic svg{width:22px;height:22px}
+.dl-meta{flex:1;min-width:0}
+.dl-meta b{display:block;color:var(--white);font-family:"Space Grotesk",sans-serif;font-size:15px;font-weight:600}
+.dl-meta span{display:block;font-size:12.5px;color:rgba(255,255,255,.55);letter-spacing:.02em}
+.dl-arrow{flex:none;color:rgba(255,255,255,.4);transition:color .16s ease,transform .16s ease}
+.dl-arrow svg{width:20px;height:20px}
+.dl:hover .dl-arrow{color:var(--accent);transform:translateY(2px)}
+@media(max-width:860px){.fp-split{grid-template-columns:1fr;gap:32px}}
 </style>
 </head>
 <body>
@@ -395,8 +427,8 @@ footer{background:#060f1e;color:rgba(255,255,255,.62);padding:64px 0 30px}
         <div class="ph"><span class="tag">Footprint</span><img src="img/b5.jpg" alt="Shoppers walking through a store doorway, counted by a Footprint people counter" loading="lazy" width="2000" height="527"></div>
         <div class="body">
           <h3>People counters</h3>
-          <p>The Footprint RCU4 counts foot traffic through single or multiple doors in shops, malls, pools and museums — so you can lift conversion and plan staff rosters around real numbers.</p>
-          <a class="more" href="#contact">Ask about Footprint <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <p>The Footprint RCU4 counts foot traffic through single or multiple doors in shops, malls, pools and museums, so you can lift conversion and plan staff rosters around real numbers.</p>
+          <a class="more" href="#footprint">See Footprint &amp; downloads <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </article>
       <article class="card reveal">
@@ -431,6 +463,54 @@ footer{background:#060f1e;color:rgba(255,255,255,.62);padding:64px 0 30px}
           <a class="more" href="#contact">Get support <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- footprint product -->
+<section class="footprint" id="footprint">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow on-dark">Footprint RCU4</span>
+      <h2>People counting, proven worldwide</h2>
+      <p>A people counter for single or multi-door use, with hour, day, week, month and year totals. Cable or wireless options available, easy to use and affordable.</p>
+    </div>
+    <div class="fp-split">
+      <div class="fp-copy reveal">
+        <p>In business today it's vital that decisions are based on informative data to increase efficiency and maximise profit. The Footprint RCU4 People Counter is designed to give you an easy-to-use tool that reports foot traffic on an hourly basis. Thanks to its impressive performance at a realistic price, coupled with outstanding reliability, it's the choice of modern retailers throughout the world.</p>
+        <p>An increasing number of retail companies rely on people counting to understand traffic flow through their stores. Match that data against actual sales and you can accurately track your sales conversion rate, and the gap between the two is how many sales you're missing out on. Lift your conversion rate and you lift your profit.</p>
+        <p>Using the latest microprocessor technology, the RCU4 can monitor up to four separate doors simultaneously, with separate counts per door and a combined total for multi-door sites. It runs completely independent of your computer, storing count data internally for up to one week, so there's no loss of data should your computer malfunction.</p>
+        <ul class="fp-feats">
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Monitor up to four doors at once, with per-door and combined totals</span></li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Hour, day, week, month and year count totals</span></li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Cable or wireless options, link multiple units for any number of doors</span></li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Stores up to a week of data on-board, no loss if your PC goes down</span></li>
+        </ul>
+      </div>
+      <div class="fp-downloads reveal">
+        <h3>Downloads &amp; resources</h3>
+        <p>Everything you need to spec, install and run the Footprint RCU4.</p>
+        <a class="dl" href="downloads/Footprint_brochure_2017.pdf" target="_blank" rel="noopener" download>
+          <span class="dl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+          <span class="dl-meta"><b>PDF Brochure</b><span>Product overview &middot; PDF &middot; 263 KB</span></span>
+          <span class="dl-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span>
+        </a>
+        <a class="dl" href="downloads/PeopleCounter_Operator_Manual.pdf" target="_blank" rel="noopener" download>
+          <span class="dl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+          <span class="dl-meta"><b>Installation Manual</b><span>Operator manual &middot; PDF &middot; 8 pages &middot; 276 KB</span></span>
+          <span class="dl-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span>
+        </a>
+        <a class="dl" href="downloads/FootprintRCU4_V4_5.exe" download>
+          <span class="dl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+          <span class="dl-meta"><b>Programme Download</b><span>FootprintRCU4 V4.5 &middot; Windows .exe &middot; 1.0 MB</span></span>
+          <span class="dl-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span>
+        </a>
+        <a class="dl" href="downloads/CP210x_VCP_Windows.zip" download>
+          <span class="dl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>
+          <span class="dl-meta"><b>USB Driver Download</b><span>CP210x VCP for Windows &middot; ZIP &middot; 3.7 MB</span></span>
+          <span class="dl-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg></span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
